@@ -16,7 +16,7 @@ export default function Navbar({ children }) {
             <div className="navbar-brand">
                 <div className="navbar-item">
                     <Link href="/">
-                        <h2 className='title is-2' style={{ 'cursor': 'pointer' }}>Matt Manoleras</h2>
+                        <p className='title is-5' style={{ 'cursor': 'pointer', 'maxWidth': '75%' }}>Matt Manoleras</p>
                     </Link>
                 </div>
                 <a role="button" onClick={toggleNavbar} className={`navbar-burger ${navbarActive ? 'is-active' : ''}`}>
