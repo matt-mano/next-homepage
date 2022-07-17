@@ -13,7 +13,7 @@ export default function Home() {
 
             <main>
                 <Navbar />
-                <h2 className='has-text-centered title is-2'>Contact</h2>
+                <h2 className='title is-2'>Contact</h2>
                 <div className='columns'>
                     <div className='column is-4 is-2-desktop is-offset-3-desktop has-text-centered'>
                         <a href="mailto:career@mattmanoleras.com">

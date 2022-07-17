@@ -13,7 +13,7 @@ export default function Home() {
 
             <main>
                 <Navbar />
-                <h2 className='has-text-centered title is-2'>Education</h2>
+                <h2 className='title is-2'>Education</h2>
                 <div className='columns'>
                     <div className='column is-5'>
                         <Image src="/osuphoto.jpg" alt="OSU Graduation" width={1440} height={1561} />

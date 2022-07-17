@@ -13,7 +13,7 @@ export default function Home() {
 
             <main>
                 <Navbar />
-                <h2 className='has-text-centered title is-2'>Skills</h2>
+                <h2 className='title is-2'>Skills</h2>
 
                 <div className='columns'>
 
