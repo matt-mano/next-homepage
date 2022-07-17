@@ -1,3 +1,5 @@
+@import "../node_modules/bulma/css/bulma.css";
+
 html,
 body {
   padding: 0;
@@ -13,4 +15,19 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.active {
+  color: goldenrod;
+}
+
+.navbar {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.navbar .navbar-menu {
+  flex-grow: initial;
+  flex-shrink: initial;
 }
