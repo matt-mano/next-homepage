@@ -56,6 +56,13 @@ export default function Navbar({ children }) {
                         </Link>
                     </div>
                     <div className="navbar-item" onClick={toggleNavbar}>
+                        <Link href="/projects">
+                            <a className={currentRoute === "/projects"
+                                ? "active"
+                                : "non-active"}>Projects</a>
+                        </Link>
+                    </div>
+                    <div className="navbar-item" onClick={toggleNavbar}>
                         <Link href="/contact">
                             <a className={currentRoute === "/contact"
                                 ? "active"

@@ -16,8 +16,8 @@ export default function Home() {
                 <h2 className='title is-2'>Contact</h2>
                 <div className='columns'>
                     <div className='column is-4 is-2-desktop is-offset-3-desktop has-text-centered'>
-                        <a href="mailto:career@mattmanoleras.com">
-                            <Image alt="linkedin logo" src="/email.png" width={64} height={64} />
+                        <a href="mailto:matt.manoleras@gmail.com">
+                            <Image alt="email logo" src="/email.png" width={64} height={64} />
                             <p className='is-3'>Email</p>
                         </a>
                     </div>
@@ -29,15 +29,13 @@ export default function Home() {
                     </div>
                     <div className='column is-4 is-2-desktop has-text-centered'>
                         <a href="https://github.com/matt-mano/">
-                            <Image alt="linkedin logo" src="/github.png" width={64} height={64} />
+                            <Image alt="github logo" src="/github.png" width={64} height={64} />
                             <p className='is-3'>GitHub</p>
                         </a>
                     </div>
                 </div>
             </main>
-
             <footer>
-
             </footer>
         </div>
     )
