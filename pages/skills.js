@@ -2,6 +2,92 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '../components/navbar'
 
+const skills = [
+    {
+        categoryName: 'Programming Languages',
+        skills: [
+            `C#`,
+            `TypeScript`,
+            `JavaScript`,
+            `SQL`,
+            `Python`,
+            `Java`,
+            `Kotlin`,
+            `HTML/CSS`
+        ]
+    },
+    {
+        categoryName: 'Backend Frameworks / Tools',
+        skills: [
+            `.NET`,
+            `.NET Core`,
+            `.NET Framework`,
+            `NUnit/NSubstitute`,
+            `Spring Boot`,
+            `Express`,
+            `Microservices`,
+        ]
+    },
+    {
+        categoryName: 'Frontend Frameworks / Tools',
+        skills: [
+            `Angular`,
+            `Vue`,
+            `NodeJs / NPM`,
+            `Blazor`,
+            `Bootstrap`,
+            `Cypress`,
+            `Jasmine`,
+            `Karma`,
+            `JQuery`,
+        ]
+    },
+    {
+        categoryName: 'Databases',
+        skills: [
+            `SQL Server`,
+            `PostgreSQL`,
+            `GCP Big Query`,
+            `Elasticsearch`,
+        ]
+    },
+    {
+        categoryName: 'DevOps / Cloud Tools',
+        skills: [
+            `Jenkins`,
+            `GitHub Actions`,
+            `Docker`,
+            `Git`,
+            `SVN`,
+            `GCP Cloud SQL`,
+            `GCP Compute Engine`,
+        ]
+    },
+    {
+        categoryName: 'Project Managment Tools',
+        skills: [
+            `JIRA`,
+            `Confluence`,
+            `Agile`,
+            `Scrum`,
+            `Kanban`,
+            `ServiceNow`,
+        ]
+    },
+    {
+        categoryName: 'Software',
+        skills: [
+            `Visual Studio`,
+            `VS Code`,
+            `SQL Server Management Studio`,
+            `PG Admin`,
+            `GCP Console`,
+            `PowerShell`,
+            `Bash`,
+        ]
+    },
+]
+
 export default function Home() {
     return (
         <div>
@@ -15,80 +101,21 @@ export default function Home() {
                 <Navbar />
                 <h2 className='title is-2'>Skills</h2>
 
-                <div className='columns'>
-
-                    <div className='column is-4'>
-                        <div className='panel'>
-                            <p className='title is-3 has-text-centered panel-heading'>Back-End</p>
-                            <div className='content panel-block'>
+                {
+                    skills.map(s => (
+                        <div className='columns' key={s.categoryName}>
+                            <div className='column is-4'>
+                                <h4 className='title is-4'>{s.categoryName}</h4>
+                            </div>
+                            <div className='content column is-8'>
                                 <ul>
-                                    <li>ASP.Net Core</li>
-                                    <li>ASP.Net Framework</li>
-                                    <li>C#</li>
-                                    <br />
-                                    <li>Java</li>
-                                    <li>Kotlin</li>
-                                    <li>Spring Boot</li>
-                                    <br />
-                                    <li>Express</li>
-                                    <br />
-                                    <li>SQL Server</li>
-                                    <li>PostgreSQL</li>
-                                    <br />
-
+                                    {s.skills.map(skill => <li key={skill}>{skill}</li>)}
                                 </ul>
                             </div>
+                            <hr />
                         </div>
-                    </div>
-
-
-                    <div className='column is-4'>
-                        <div className='panel'>
-                            <p className='title is-3 has-text-centered panel-heading'>Front-End</p>
-                            <div className='content panel-block'>
-                                <ul>
-                                    <li>Angular</li>
-                                    <li>Typescript</li>
-                                    <br />
-                                    <li>Vue</li>
-                                    <li>Javascript</li>
-                                    <br />
-                                    <li>Blazor</li>
-                                    <br />
-                                    <li>Bootstrap</li>
-                                    <li>Bulma</li>
-                                    <li>HTML / CSS</li>
-                                    <li>Responsive Design</li>
-                                    <br />
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className='column is-4'>
-                        <div className='panel'>
-                            <p className='title is-3 has-text-centered panel-heading'>DevOps</p>
-                            <div className='content panel-block'>
-                                <ul>
-                                    <li>Jenkins</li>
-                                    <li>GitHub Actions</li>
-                                    <li>CI / CD</li>
-                                    <br />
-                                    <li>Docker</li>
-                                    <li>IIS</li>
-                                    <li>Nginx</li>
-                                    <li>Google Cloud Platform (GCP)</li>
-                                    <br />
-                                    <li>Git</li>
-                                    <li>GitHub</li>
-                                    <li>SVN</li>
-                                    <br />
-
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    ))
+                }
             </main>
 
             <footer>
