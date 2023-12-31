@@ -9,7 +9,7 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-func NewMongoClient() (*mongo.Client, error) {
+func NewHomepageDatabase() (*mongo.Database, error) {
 	serverAPI := options.ServerAPI(options.ServerAPIVersion1)
 	opts := options.Client().ApplyURI(os.Getenv("HOMEPAGE_MONGODB_URL")).SetServerAPIOptions(serverAPI)
 	// Create a new client and connect to the server
@@ -17,5 +17,5 @@ func NewMongoClient() (*mongo.Client, error) {
 	if err != nil {
 		fmt.Println(err)
 	}
-	return client, err
+	return client.Database("Homepage"), err
 }

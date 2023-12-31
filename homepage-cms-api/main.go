@@ -16,7 +16,7 @@ func main() {
 	l := log.New(os.Stdout, "homepage api: ", log.LstdFlags)
 
 	//Connect to database
-	db, err := data.NewMongoClient()
+	db, err := data.NewHomepageDatabase()
 	if err != nil {
 		panic(err)
 	}
@@ -43,9 +43,6 @@ func main() {
 		if err != nil {
 			l.Fatal(err)
 		}
-		if err = db.Disconnect(context.TODO()); err != nil {
-			l.Fatal(err)
-		}
 	}()
 
 	//Wait for interrupt
@@ -55,5 +52,9 @@ func main() {
 	sig := <-sigChannel
 	l.Println("Shutdown starting... recieved", sig)
 	tc, _ := context.WithTimeout(context.Background(), 30*time.Second)
+	if err = db.Client().Disconnect(tc); err != nil {
+		l.Fatal(err)
+	}
 	server.Shutdown(tc)
+
 }
