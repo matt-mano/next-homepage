@@ -4,21 +4,27 @@ on:
     branches:
       - main
 jobs:
-  build-ui-image:
+  build-main-ui-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+      - run: cd homepage-main-ui
       - uses: actions/setup-node@v2
         with:
-          node-version: "16"
-      - name: Set up Docker Buildx
+          node-version: "18"
+      - name: Set up Docker Build
         uses: docker/setup-buildx-action@v2
       - name: Build container image
         uses: docker/build-push-action@v1
         with:
-          repository: matt-mano/next-homepage
+          repository: matt-mano/next-homepage/main-ui
           username: ${{github.actor}}
           password: ${{secrets.GITHUB_TOKEN}}
           registry: ghcr.io
           tag_with_sha: true
           tags: latest
+  build-cms-api-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: cd homepage-cms-api
