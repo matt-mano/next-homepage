@@ -3,53 +3,13 @@ import Image from 'next/image'
 import Navbar from '../components/navbar'
 import Link from 'next/link';
 
-const projects = [
-    {
-        title: "This Website",
-        link: "https://mattmanoleras.com",
-        description: "This website!  Built using NextJs for faster page loads and hosted in a Docker container.",
-        github: "https://github.com/matt-mano/next-homepage",
-        stack: [
-            "NextJs",
-            "React",
-            "Bulma",
-            "Docker",
-            "GitHub Actions",
-            "Nginx"
-        ]
-    },
-    {
-        title: "Workout Tracker",
-        link: "https://workouttracker.dev.mattmanoleras.com",
-        description: "Built as an excercise in learning Blazor and Authentication and an excercise in getting more exercise.",
-        stack: [
-            ".NET",
-            "Blazor",
-            "Bootstrap",
-            "JWT Authentication",
-            "Docker",
-            "GitHub Actions",
-            "PostgreSQL",
-            "Nginx"
-        ]
-    },
-    {
-        title: "Wedding Website",
-        description: "In collaboration with my #1 stakeholder!  Our wedding website was built leveraging GitHub actions to allow for easy updates and logged interactions and registry clicks to PostgreSQL using an express backend.",
-        link: "https://wedding.korramatt.com",
-        stack: [
-            "Vue",
-            "Express",
-            "Bulma",
-            "Docker",
-            "GitHub Actions",
-            "PostgreSQL",
-            "Nginx"
-        ]
-    }
-]
+export async function getStaticProps() {
+    const res = await fetch('http://localhost:9090/projects')
+    const projects = await res.json()
+    return { props: { projects } }
+}
 
-export default function Home() {
+export default function Home({ projects }) {
     return (
         <div>
             <Head>
