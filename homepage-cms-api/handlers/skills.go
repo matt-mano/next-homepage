@@ -11,30 +11,16 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-type Experiences struct {
+type Skills struct {
 	l  *log.Logger
 	db *mongo.Database
 }
 
-func NewExperiences(l *log.Logger, db *mongo.Database) *Experiences {
+func NewSkills(l *log.Logger, db *mongo.Database) *Experiences {
 	return &Experiences{l, db}
 }
 
-type Experience struct {
-	ID       int     `json:"id"`
-	Company  string  `json:"company"`
-	Location string  `json:"location"`
-	Roles    []*Role `json:"roles"`
-}
-
-type Role struct {
-	Title     string   `json:"title"`
-	StartDate string   `json:"startDate"`
-	EndDate   string   `json:"endDate"`
-	Notes     []string `json:"notes"`
-}
-
-func (exp *Experiences) getExperiences(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) getExperiences(rw http.ResponseWriter, h *http.Request) {
 	//Load all experiences from db
 	searchAllOptions := options.Find()
 	searchAllOptions.SetLimit(50)
@@ -66,15 +52,15 @@ func (exp *Experiences) getExperiences(rw http.ResponseWriter, h *http.Request) 
 	}
 }
 
-func (exp *Experiences) addExperience(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) addExperience(rw http.ResponseWriter, h *http.Request) {
 	//TODO: Implement CMS routes and UI
 }
 
-func (exp *Experiences) updateExperience(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) updateExperience(rw http.ResponseWriter, h *http.Request) {
 	//TODO: Implement CMS routes and UI
 }
 
-func (exp *Experiences) getAnyExperience(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) getAnyExperience(rw http.ResponseWriter, h *http.Request) {
 	// Load any entry from database (TODO: Add in IDs and URL matching)
 	loaded := &Experience{}
 	err := exp.db.Collection("Experiences").FindOne(context.TODO(), bson.D{{}}).Decode(loaded)
