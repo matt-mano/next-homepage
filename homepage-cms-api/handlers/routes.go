@@ -34,8 +34,9 @@ func NewRouter(l *log.Logger, eh *Experiences) *Router {
 	// Generate and compile routes
 	routes := []Route{
 		NewRoute("GET", "/experiences", eh.getExperiences),
+		NewRoute("GET", "/experiences/[0-9]+", eh.getAnyExperience),
 		NewRoute("POST", "/experiences", eh.addExperience),
-		NewRoute("PUT", "/experiences/[0-9]+", eh.addExperience), //TODO: FIX
+		NewRoute("PUT", "/experiences/[0-9]+", eh.updateExperience),
 	}
 
 	return &Router{l, eh, routes}
