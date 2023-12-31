@@ -2,7 +2,13 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Navbar from '../components/navbar';
 
-export default function Home() {
+export async function getStaticProps() {
+    const res = await fetch('http://localhost:9090/experiences')
+    const experiences = await res.json()
+    return { props: { experiences } }
+}
+
+export default function Home({ experiences }) {
     return (
         <div>
             <Head>
