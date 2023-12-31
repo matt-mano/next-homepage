@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Navbar from '../components/navbar';
 
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:9090/experiences')
+    const res = await fetch(process.env.HOMEPAGE_API_URL + 'experiences')
     const experiences = await res.json()
     return { props: { experiences } }
 }

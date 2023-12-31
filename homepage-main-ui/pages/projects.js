@@ -4,7 +4,7 @@ import Navbar from '../components/navbar'
 import Link from 'next/link';
 
 export async function getStaticProps() {
-    const res = await fetch('http://localhost:9090/projects')
+    const res = await fetch(process.env.HOMEPAGE_API_URL + 'projects')
     const projects = await res.json()
     return { props: { projects } }
 }
