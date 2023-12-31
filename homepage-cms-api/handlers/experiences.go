@@ -3,7 +3,6 @@ package handlers
 import (
 	"context"
 	"encoding/json"
-	"homepagecms/data"
 	"homepagecms/models"
 	"log"
 	"net/http"
@@ -55,17 +54,7 @@ func (exp *Experiences) getExperiences(rw http.ResponseWriter, h *http.Request) 
 }
 
 func (exp *Experiences) addExperience(rw http.ResponseWriter, h *http.Request) {
-	decoder := json.NewDecoder(h.Body)
-	experience := &models.Experience{}
-	e := decoder.Decode(experience)
-
-	if e != nil {
-		http.Error(rw, "Couldn't read the JSONs", http.StatusBadRequest)
-		return
-	}
-
-	exp.l.Printf("Prod: %#v", experience)
-	data.AddExperience(experience)
+	//TODO: Implement CMS routes and UI
 }
 
 func (exp *Experiences) updateExperience(rw http.ResponseWriter, h *http.Request) {
