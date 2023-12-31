@@ -23,7 +23,8 @@ func main() {
 
 	//Create logger and router
 	eh := handlers.NewExperiences(l, db)
-	r := handlers.NewRouter(l, eh)
+	sh := handlers.NewSkills(l, db)
+	r := handlers.NewRouter(l, eh, sh)
 
 	//Register routes
 	sm := http.NewServeMux()

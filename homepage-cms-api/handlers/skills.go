@@ -16,27 +16,32 @@ type Skills struct {
 	db *mongo.Database
 }
 
-func NewSkills(l *log.Logger, db *mongo.Database) *Experiences {
-	return &Experiences{l, db}
+func NewSkills(l *log.Logger, db *mongo.Database) *Skills {
+	return &Skills{l, db}
 }
 
-func (exp *Skills) getExperiences(rw http.ResponseWriter, h *http.Request) {
-	//Load all experiences from db
+type Skill struct {
+	CategoryName string   `json:"categoryName"`
+	Skills       []string `json:"skills"`
+}
+
+func (exp *Skills) getSkills(rw http.ResponseWriter, h *http.Request) {
+	//Load all Skills from db
 	searchAllOptions := options.Find()
 	searchAllOptions.SetLimit(50)
-	var results []Experience
-	cursor, err := exp.db.Collection("Experiences").Find(context.TODO(), bson.D{{}}, searchAllOptions)
+	var results []Skill
+	cursor, err := exp.db.Collection("Skills").Find(context.TODO(), bson.D{{}}, searchAllOptions)
 	if err != nil {
-		http.Error(rw, "Couldn't load experience", http.StatusInternalServerError)
+		http.Error(rw, "Couldn't load Skill", http.StatusInternalServerError)
 		return
 	}
 
 	//Hydrate objects
 	for cursor.Next(context.TODO()) {
-		exp := Experience{}
+		exp := Skill{}
 		err = cursor.Decode(&exp)
 		if err != nil {
-			http.Error(rw, "Couldn't load experience", http.StatusInternalServerError)
+			http.Error(rw, "Couldn't load Skill", http.StatusInternalServerError)
 			return
 		}
 		results = append(results, exp)
@@ -52,21 +57,21 @@ func (exp *Skills) getExperiences(rw http.ResponseWriter, h *http.Request) {
 	}
 }
 
-func (exp *Skills) addExperience(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) addSkill(rw http.ResponseWriter, h *http.Request) {
 	//TODO: Implement CMS routes and UI
 }
 
-func (exp *Skills) updateExperience(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) updateSkill(rw http.ResponseWriter, h *http.Request) {
 	//TODO: Implement CMS routes and UI
 }
 
-func (exp *Skills) getAnyExperience(rw http.ResponseWriter, h *http.Request) {
+func (exp *Skills) getAnySkill(rw http.ResponseWriter, h *http.Request) {
 	// Load any entry from database (TODO: Add in IDs and URL matching)
-	loaded := &Experience{}
-	err := exp.db.Collection("Experiences").FindOne(context.TODO(), bson.D{{}}).Decode(loaded)
+	loaded := &Skill{}
+	err := exp.db.Collection("Skills").FindOne(context.TODO(), bson.D{{}}).Decode(loaded)
 	if err != nil {
 		exp.l.Println(err)
-		http.Error(rw, "Couldn't load experience", http.StatusInternalServerError)
+		http.Error(rw, "Couldn't load Skill", http.StatusInternalServerError)
 		return
 	}
 
@@ -76,7 +81,7 @@ func (exp *Skills) getAnyExperience(rw http.ResponseWriter, h *http.Request) {
 	err = encoder.Encode(loaded)
 
 	if err != nil {
-		http.Error(rw, "Couldn't encode experience", http.StatusInternalServerError)
+		http.Error(rw, "Couldn't encode Skill", http.StatusInternalServerError)
 		return
 	}
 
