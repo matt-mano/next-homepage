@@ -29,7 +29,7 @@ type Router struct {
 	routes []Route
 }
 
-func NewRouter(l *log.Logger, eh *Experiences, sh *Skills) *Router {
+func NewRouter(l *log.Logger, eh *Experiences, sh *Skills, ph *Projects) *Router {
 
 	// Generate and compile routes
 	routes := []Route{
@@ -41,6 +41,10 @@ func NewRouter(l *log.Logger, eh *Experiences, sh *Skills) *Router {
 		NewRoute("GET", "/skills/[0-9]+", sh.getAnySkill),
 		NewRoute("POST", "/skills", sh.addSkill),
 		NewRoute("PUT", "/skills/[0-9]+", sh.updateSkill),
+		NewRoute("GET", "/projects", ph.getProjects),
+		NewRoute("GET", "/projects/[0-9]+", ph.getAnyProject),
+		NewRoute("POST", "/projects", ph.addProject),
+		NewRoute("PUT", "/projects/[0-9]+", ph.updateProject),
 	}
 
 	return &Router{l, eh, routes}
