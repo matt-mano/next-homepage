@@ -9,9 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - run: cd homepage-main-ui
-
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           node-version: "18"
 
@@ -26,12 +24,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ghcr.io/${{ github.repository }}       
+          images: ghcr.io/${{ github.repository }}/main-ui    
 
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
+          context: ./homepage-main-ui
+          file: ./homepage-main-ui/Dockerfile
           push: true
           tags: user/app:latest
           labels: ${{ steps.meta.outputs.labels }}
