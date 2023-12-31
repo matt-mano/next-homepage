@@ -46,5 +46,6 @@ USER nextjs
 EXPOSE 80
 
 ENV PORT 80
+ENV HOMEPAGE_API_URL https://cms.mattmanoleras.com/api/
 
 CMD ["node", "server.js"]
