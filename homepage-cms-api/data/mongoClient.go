@@ -3,10 +3,8 @@ package data
 import (
 	"context"
 	"fmt"
-	"homepagecms/models"
 	"os"
 
-	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -20,18 +18,4 @@ func NewMongoClient() (*mongo.Client, error) {
 		fmt.Println(err)
 	}
 	return client, err
-}
-
-func GetOneExperience(db *mongo.Client) *models.Experience {
-	// Send a ping to confirm a successful connection
-	exp := &models.Experience{}
-
-	// Send a ping to confirm a successful connection
-	err := db.Database("Homepage").Collection("Experiences").FindOne(context.TODO(), bson.D{{}}).Decode(exp)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("Got something  %#v", exp)
-
-	return exp
 }
