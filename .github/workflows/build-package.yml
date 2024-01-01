@@ -41,4 +41,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
+
       - run: cd homepage-cms-api
+
+      - name: Log in to the Github registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}   
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ghcr.io/${{ github.repository }}/cms-api    
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./homepage-cms-api
+          file: ./homepage-cms-api/Dockerfile
+          push: true
+          tags: user/app:latest
+          labels: ${{ steps.meta.outputs.labels }}
