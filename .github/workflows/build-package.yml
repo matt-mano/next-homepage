@@ -34,7 +34,7 @@ jobs:
           context: ./homepage-main-ui
           file: ./homepage-main-ui/Dockerfile
           push: true
-          tags: user/app:latest
+          tags: ghcr.io/matt-mano/${{ github.repository }}/main-ui/latest
           labels: ${{ steps.meta.outputs.labels }}
 
   build-cms-api-image:
@@ -63,5 +63,5 @@ jobs:
           context: ./homepage-cms-api
           file: ./homepage-cms-api/Dockerfile
           push: true
-          tags: user/app:latest
+          tags: ghcr.io/matt-mano/${{ github.repository }}/cms-api/latest
           labels: ${{ steps.meta.outputs.labels }}
