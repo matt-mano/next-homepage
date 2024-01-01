@@ -3,9 +3,14 @@ import Image from 'next/image'
 import Navbar from '../components/navbar'
 
 export async function getStaticProps() {
-    const res = await fetch(process.env.HOMEPAGE_API_URL + 'skills')
-    const skills = await res.json()
-    return { props: { skills } }
+    try {
+        const res = await fetch(process.env.HOMEPAGE_API_URL + 'skills')
+        const skills = await res.json()
+        return { props: { skills } }
+    } catch {
+        return { props: { skills: [] } }
+    }
+
 }
 
 export default function Home({ skills }) {
