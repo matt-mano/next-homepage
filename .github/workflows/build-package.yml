@@ -2,7 +2,7 @@ name: Build Package
 on:
   push:
     branches:
-      - dynamic-homepage
+      - main
 jobs:
   build-main-ui-image:
     runs-on: ubuntu-latest
