@@ -16,7 +16,7 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV HOMEPAGE_API_URL https://cms.mattmanoleras.com/api/
+ENV HOMEPAGE_API_URL http://cms.mattmanoleras.com/api/
 
 # If using npm comment out above and use below instead
 RUN npm run build
@@ -47,6 +47,6 @@ USER nextjs
 EXPOSE 80
 
 ENV PORT 80
-ENV HOMEPAGE_API_URL https://cms.mattmanoleras.com/api/
+ENV HOMEPAGE_API_URL http://cms.mattmanoleras.com/api/
 
 CMD ["node", "server.js"]
