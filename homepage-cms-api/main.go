@@ -33,7 +33,7 @@ func main() {
 
 	//Start the server
 	server := &http.Server{
-		Addr:         ":9090",
+		Addr:         os.Getenv("HOMEPAGE_CMS_API_PORT"),
 		Handler:      sm,
 		IdleTimeout:  120 * time.Second,
 		ReadTimeout:  1 * time.Second,
