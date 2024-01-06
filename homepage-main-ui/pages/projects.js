@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Navbar from '../components/navbar'
 import Link from 'next/link';
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     try {
         const res = await fetch(process.env.HOMEPAGE_API_URL + 'projects')
         const projects = await res.json()
