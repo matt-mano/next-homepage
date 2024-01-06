@@ -65,3 +65,26 @@ jobs:
           push: true
           tags: ghcr.io/matt-mano/${{ github.repository }}/cms-api/latest
           labels: ${{ steps.meta.outputs.labels }}
+  
+  deploy-sites:
+    needs: [build-main-ui-image, build-cms-api-image]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy sites
+        uses: appleboy/ssh-action@v1.0.2
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            docker pull ghcr.io/matt-mano/matt-mano/next-homepage/cms-api/latest:latest
+            docker stop homepageapi
+            docker rm homepageapi
+            docker run -d -p 8087:80 --name homepageapi --env HOMEPAGE_MONGODB_URL=${{ secrets.DB_CONNECTION_STRING }} --restart unless-stopped ghcr.io/matt-mano/matt-mano/next-homepage/cms-api/latest:latest
+            
+            docker pull ghcr.io/matt-mano/matt-mano/next-homepage/main-ui/latest:latest
+            docker stop homepage
+            docker rm homepage
+            docker run -d -p 8084:80 --name homepage --restart unless-stopped ghcr.io/matt-mano/matt-mano/next-homepage/main-ui/latest:latest
+            
+    
