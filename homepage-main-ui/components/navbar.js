@@ -16,7 +16,7 @@ export default function Navbar({ children }) {
             <div className="navbar-brand">
                 <div className="navbar-item">
                     <Link href="/">
-                        <p className='title is-5' style={{ 'cursor': 'pointer', 'maxWidth': '75%' }}>Matt Manoleras</p>
+                        <h3 className='title is-4' style={{ 'cursor': 'pointer', 'maxWidth': '75%' }}>Matt Manoleras</h3>
                     </Link>
                 </div>
                 <a role="button" onClick={toggleNavbar} className={`navbar-burger ${navbarActive ? 'is-active' : ''}`}>
@@ -28,46 +28,37 @@ export default function Navbar({ children }) {
             <div className={`navbar-menu ${navbarActive ? 'is-active' : ''}`}>
                 <div className='navbar-end'>
                     <div className="navbar-item" onClick={toggleNavbar}>
-                        <Link href="/">
-                            <a className={currentRoute === "/"
-                                ? "active"
-                                : "non-active"}>Home</a>
+                        <Link href="/" className={currentRoute === "/"
+                            ? "active"
+                            : "non-active"}>Home
                         </Link>
                     </div>
                     <div className="navbar-item" onClick={toggleNavbar}>
-                        <Link href="/experience">
-                            <a className={currentRoute === "/experience"
-                                ? "active"
-                                : "non-active"}>Experience</a>
+                        <Link href="/experience" className={currentRoute === "/experience"
+                            ? "active"
+                            : "non-active"}>Experience
                         </Link>
                     </div>
                     <div className="navbar-item" onClick={toggleNavbar}>
-                        <Link href="/education">
-                            <a className={currentRoute === "/education"
-                                ? "active"
-                                : "non-active"}>Education</a>
+                        <Link href="/education" className={currentRoute === "/education"
+                            ? "active"
+                            : "non-active"}>Education
                         </Link>
                     </div>
                     <div className="navbar-item" onClick={toggleNavbar}>
-                        <Link href="/skills">
-                            <a className={currentRoute === "/skills"
-                                ? "active"
-                                : "non-active"}>Skills</a>
+                        <Link href="/skills" className={currentRoute === "/skills"
+                            ? "active"
+                            : "non-active"}>Skills
                         </Link>
                     </div>
                     <div className="navbar-item" onClick={toggleNavbar}>
-                        <Link href="/projects">
-                            <a className={currentRoute === "/projects"
-                                ? "active"
-                                : "non-active"}>Projects</a>
+                        <Link href="/projects" className={currentRoute === "/projects"
+                            ? "active"
+                            : "non-active"}>Projects
                         </Link>
                     </div>
                     <div className="navbar-item" onClick={toggleNavbar}>
-                        <Link href="/contact">
-                            <a className={currentRoute === "/contact"
-                                ? "active"
-                                : "non-active"}>Contact</a>
-                        </Link>
+                        <Link href="/contact" className={currentRoute === "/contact" ? "active" : "non-active"}>Contact</Link>
                     </div>
                 </div>
             </div>

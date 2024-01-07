@@ -32,8 +32,8 @@ export default function Home({ projects }) {
                         <div key={p.title}>
                             <h3 className='title is-3'>{p.title}</h3>
                             <p>{p.description}</p>
-                            <a className='link has-text-bold' href={p.link}>{p.link}</a><br />
-                            {p.github ? <a href={p.github}>GitHub</a> : ''}
+                            <a className='inline-link' href={p.link}>{p.link}</a><br />
+                            {p.github ? <a className='inline-link' href={p.github}>GitHub</a> : ''}
                             <div className='content'>
                                 <ul>
                                     {p.stack.map(s => <li key={s}>{s}</li>)}

@@ -18,5 +18,11 @@ a {
 }
 
 .active {
-  color: goldenrod;
+  color: rgb(206, 153, 20);
+  font-weight: bold;
+}
+
+.inline-link {
+  color: rgb(206, 153, 20);
+  text-decoration: underline;
 }
