@@ -1,5 +1,7 @@
 @import "../node_modules/bulma/css/bulma.css";
 
+$primary: rgb(206, 153, 20);
+
 html,
 body {
   padding: 0;
@@ -18,11 +20,11 @@ a {
 }
 
 .active {
-  color: rgb(206, 153, 20);
+  color: $primary;
   font-weight: bold;
 }
 
 .inline-link {
-  color: rgb(206, 153, 20);
+  color: $primary;
   text-decoration: underline;
 }
