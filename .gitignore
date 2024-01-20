@@ -28,7 +28,11 @@ yarn-error.log*
 
 # local env files
 .env*.local
+localenv.sh
 
 # vercel
 .vercel
 .next
+
+# vite
+.vite
