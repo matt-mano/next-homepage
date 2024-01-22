@@ -34,17 +34,19 @@ func NewRouter(l *log.Logger, eh *Experiences, sh *Skills, ph *Projects) *Router
 	// Generate and compile routes
 	routes := []Route{
 		NewRoute("GET", "/api/experiences", eh.getExperiences),
-		NewRoute("GET", "/api/experiences/[0-9]+", eh.getAnyExperience),
+		NewRoute("GET", "/api/experiences/[a-zA-Z0-9]+", eh.getAnyExperience),
 		NewRoute("POST", "/api/experiences", eh.addExperience),
-		NewRoute("PUT", "/api/experiences/[0-9]+", eh.updateExperience),
+		NewRoute("PUT", "/api/experiences/[a-zA-Z0-9]+", eh.updateExperience),
+
 		NewRoute("GET", "/api/skills", sh.getSkills),
-		NewRoute("GET", "/api/skills/[0-9]+", sh.getAnySkill),
+		NewRoute("GET", "/api/skills/[a-zA-Z0-9]+", sh.getSkill),
 		NewRoute("POST", "/api/skills", sh.addSkill),
-		NewRoute("PUT", "/api/skills/[0-9]+", sh.updateSkill),
+		NewRoute("PUT", "/api/skills/[a-zA-Z0-9]+", sh.updateSkill),
+
 		NewRoute("GET", "/api/projects", ph.getProjects),
-		NewRoute("GET", "/api/projects/[0-9]+", ph.getAnyProject),
+		NewRoute("GET", "/api/projects/[a-zA-Z0-9]+", ph.getAnyProject),
 		NewRoute("POST", "/api/projects", ph.addProject),
-		NewRoute("PUT", "/api/projects/[0-9]+", ph.updateProject),
+		NewRoute("PUT", "/api/projects/[a-zA-Z0-9]+", ph.updateProject),
 	}
 
 	return &Router{l, eh, routes}
