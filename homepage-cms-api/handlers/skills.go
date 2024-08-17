@@ -65,7 +65,15 @@ func (exp *Skills) getSkills(rw http.ResponseWriter, h *http.Request) {
 }
 
 func (exp *Skills) addSkill(rw http.ResponseWriter, h *http.Request) {
-	//TODO: Implement CMS routes and UI
+	skill, err := getSkillFromRequest((h))
+	if err != nil {
+		http.Error(rw, "Couldn't parse the request", http.StatusBadRequest)
+	}
+
+	_, err = exp.db.Collection("Skills").InsertOne(context.TODO(), skill)
+	if err != nil {
+		http.Error(rw, "Couldn't insert", http.StatusInternalServerError)
+	}
 }
 
 func (exp *Skills) updateSkill(rw http.ResponseWriter, h *http.Request) {

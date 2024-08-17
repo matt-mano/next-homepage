@@ -1,11 +1,16 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
 import SkillEditor from "../../components/skillEditor";
 import { Container, Row } from "react-bootstrap";
 
 const Skills = () => {
 
-    const skills = useLoaderData();
+    React.useEffect(() => {
+        fetch("/api/skills", { mode: 'cors' }).then(resp => {
+            resp.json().then((s) => setSkills(s));
+        });
+    }, []);
+
+    const [skills, setSkills] = React.useState([]);
 
     return (
 

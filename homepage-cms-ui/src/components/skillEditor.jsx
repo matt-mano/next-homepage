@@ -5,7 +5,15 @@ import Form from 'react-bootstrap/Form';
 
 const SkillEditor = (props) => {
 
-    const [skill, setSkill] = useState({ ...props.skill });
+    console.log("Skill:")
+    console.log(props.skill)
+
+    const [skill, setSkill] = useState({
+        ...props.skill ?? {
+            categoryName: '',
+            skills: []
+        }
+    });
 
     const setTitle = (title) => {
         setSkill({
@@ -59,8 +67,8 @@ const SkillEditor = (props) => {
                         <Form.Label>Skills</Form.Label>
                     </Form.Group>
                     {
-                        skill.skills.map((s, i) => <Form.Group key={i} className="mb-3">
-                            <FormControl type="text" onChange={(val) => updateSkill(val.value, i)} value={s} />
+                        skill.skills.map((s, i) => <Form.Group key={i} className="mb-3" controlId={'Group' + skill.categoryName + i}>
+                            <FormControl type="text" value={s} onChange={(val) => updateSkill(val.value, i)} />
                         </Form.Group>
                         )
                     }
